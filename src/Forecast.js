@@ -6,10 +6,20 @@ const Forecast = () => {
     let [responseObj, setResponseObj] = useState({});
     let [city, setCity] = useState('London,uk');
     let [unit, setUnit] = useState('imperial');
+    let [error, setError] = useState(false);
+    let [loading, setLoading] = useState(false);
 
 
     function getForecast(e) {
         e.preventDefault();
+
+        if (city.length === 0) {
+            return setError(true);
+        }
+
+        setError(false);
+        setResponseObj({});
+        setLoading(true);
 
         let url = new URL("https://community-open-weather-map.p.rapidapi.com/weather?");
         let params = {
@@ -28,11 +38,19 @@ const Forecast = () => {
         })
             .then(response => response.json())
             .then(data => {
+
+                if(data.cod !== 200) {
+                    throw new Error();
+                }
+
                 setResponseObj(data);
-                console.log(data);
+                setLoading(false);
+
             })
             .catch(err => {
-                console.log(err);
+                setError(true);
+                setLoading(false);
+                console.log(err.message);
             });
     }
 
@@ -74,7 +92,10 @@ const Forecast = () => {
                 <button type="submit">Get Forecast</button>
             </form>
 
-            <Conditions responseObj={responseObj} />
+            <Conditions
+                responseObj={responseObj}
+                error={error}
+                loading={loading} />
         </div>
     )
 }

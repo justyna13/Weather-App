@@ -4,6 +4,12 @@ import React from "react";
 const Conditions = (props) => {
     return (
         <div>
+
+            {props.error && <small>Please enter a valid city</small>}
+
+            {props.loading && <div>Loading...</div>}
+
+
             {props.responseObj.cod === 200 ?
             <div>
                 <p><strong>{props.responseObj.name}</strong></p>
