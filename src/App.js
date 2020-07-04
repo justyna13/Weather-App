@@ -1,11 +1,18 @@
 import React from 'react';
 
 import './App.css';
+import Forecast from "./Forecast";
 
 function App() {
   return (
-    <div>
-      Weather App
+    <div className="weather-wrapper">
+        <main>
+          <Forecast />
+        </main>
+
+        <footer>
+            Page created by Justyna
+        </footer>
     </div>
   );
 }
