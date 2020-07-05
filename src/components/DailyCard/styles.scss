@@ -1,0 +1,29 @@
+.weather-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20vh;
+
+}
+
+.weather-card {
+  background: rgba(255, 255, 255, 0.2);
+  max-width: 150px;
+  width: 50%;
+  padding: 0 10px 40px 10px;
+  margin: 10px;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 1rem;
+
+  h5 {
+    margin: 2rem auto;
+    font-weight: normal;
+  }
+
+  p {
+    margin-top: 3rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+}

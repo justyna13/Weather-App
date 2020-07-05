@@ -1,5 +1,6 @@
 import React, {useState} from "react";
-import Conditions from "./components/Conditions";
+import DailyCard from "./components/DailyCard/DailyCard";
+import Form from "./components/Form/Form";
 
 const Forecast = () => {
 
@@ -9,9 +10,14 @@ const Forecast = () => {
     let [error, setError] = useState(false);
     let [loading, setLoading] = useState(false);
 
+    let [forecastForFiveDays, setForecastForFiveDays] = useState([]);
 
-    function getForecast(e) {
+
+    function getForecast(e, cityName, unitChoosen) {
         e.preventDefault();
+
+        setCity(cityName);
+        setUnit(unitChoosen);
 
         if (city.length === 0) {
             return setError(true);
@@ -21,13 +27,15 @@ const Forecast = () => {
         setResponseObj({});
         setLoading(true);
 
-        let url = new URL("https://community-open-weather-map.p.rapidapi.com/weather?");
+        let url = new URL("https://community-open-weather-map.p.rapidapi.com/forecast?");
         let params = {
             q: city,
             units: unit
         }
 
         Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+
+
 
         fetch(url.toString(), {
             "method": "GET",
@@ -38,11 +46,13 @@ const Forecast = () => {
         })
             .then(response => response.json())
             .then(data => {
+                // console.log(data);
+                let dailyData = data.list.filter(reading => {
+                    return reading.dt_txt.includes("18:00:00");
+                });
 
-                if(data.cod !== 200) {
-                    throw new Error();
-                }
 
+                setForecastForFiveDays(dailyData);
                 setResponseObj(data);
                 setLoading(false);
 
@@ -50,52 +60,47 @@ const Forecast = () => {
             .catch(err => {
                 setError(true);
                 setLoading(false);
-                console.log(err.message);
+                // console.log(err.message);
             });
+
+
+        console.log(forecastForFiveDays);
     }
 
     return (
         <div>
             <h2>Find Current Weather Conditions</h2>
 
+            <Form
+                city={city}
+                unit={unit}
+                handleSubmit={getForecast}
+            />
 
-            <form onSubmit={getForecast}>
-                <input
-                    type="text"
-                    placeholder="Enter City"
-                    maxLength="50"
-                    value={city}
-                    onChange={e => setCity(e.target.value)} />
+            {error && <small>Please enter a valid city</small>}
 
-                    <br/>
+            {loading && <div>Loading...</div>}
 
-                <label>
-                    <input
-                        type="radio"
-                        name="units"
-                        checked={unit === 'imperial'}
-                        value="imperial"
-                        onChange={e => setUnit(e.target.value)} />
-                    Fahrenheit
-                </label>
+            {forecastForFiveDays.length > 0 ?
+                <div>
+                    <h4>Forecast</h4>
 
-                <label>
-                    <input
-                        type="radio"
-                        name="units"
-                        checked={unit === 'metric'}
-                        value="metric"
-                        onChange={e => setUnit(e.target.value)} />
-                    Celcius
-                </label>
-                <br/>
-                <button type="submit">Get Forecast</button>
-            </form>
+                    <div className="weather-cards">
 
-            <Conditions
-                responseObj={responseObj}
-                error={error}
-                loading={loading} />
+                        {forecastForFiveDays.map( (daily, index) => {
+                            return <DailyCard
+                                        key={index}
+                                        error={error}
+                                        loading={loading}
+                                        responseObj={responseObj}
+                                        data={daily}
+                                        icon={daily.weather[0].icon} />
+                        })}
+                    </div>
+                </div>
+
+                : null }
+
         </div>
     )
 }

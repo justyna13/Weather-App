@@ -1,0 +1,31 @@
+.weather-input {
+  margin-bottom: 10px;
+  border: none;
+  border-bottom: 1px solid white;
+  background: transparent;
+  padding: 5px 12px;
+  color: #fff;
+
+  &:focus {
+    background: rgba(#fff, .2);
+    border: 1px solid white;
+  }
+}
+
+.weather-form button {
+  display: inline-block;
+  margin: 1rem auto;
+  background: #fff;
+  color: #2a2828;
+  border: none;
+  padding: 5px 25px;
+  border-radius: 5px;
+  font-weight: normal;
+  cursor: pointer;
+
+
+  &:hover {
+    background: rgba(#999, .8);
+    color: #fff;
+  }
+}
