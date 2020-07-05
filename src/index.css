@@ -5,6 +5,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+}
+
+main {
+  background: url("assets/images/bg5.jpg") center center;
+  background-size: cover;
+}
+
+footer {
+  color: #000;
 }
 
 code {
