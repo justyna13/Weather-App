@@ -1,24 +1,24 @@
 .weather-input {
-  margin-bottom: 10px;
+  background: transparent;
   border: none;
   border-bottom: 1px solid white;
-  background: transparent;
-  padding: 5px 12px;
-  color: #fff; }
+  color: #fff;
+  margin-bottom: 10px;
+  padding: 5px 12px; }
   .weather-input:focus {
     background: rgba(255, 255, 255, 0.2);
     border: 1px solid white; }
 
 .weather-form button {
-  display: inline-block;
-  margin: 1rem auto;
   background: #fff;
-  color: #2a2828;
-  border: none;
-  padding: 5px 25px;
+  border: 0;
   border-radius: 5px;
+  color: #2a2828;
+  cursor: pointer;
+  display: inline-block;
   font-weight: normal;
-  cursor: pointer; }
+  margin: 1rem auto;
+  padding: 5px 25px; }
   .weather-form button:hover {
     background: rgba(153, 153, 153, 0.8);
     color: #fff; }

@@ -5,7 +5,6 @@ import CurrentConditions from "./components/CurrentConditions/CurrentConditions"
 
 const Forecast = () => {
 
-    let [responseObj, setResponseObj] = useState({});
     let [city, setCity] = useState('London,uk');
     let [unit, setUnit] = useState('imperial');
     let [error, setError] = useState(false);
@@ -25,7 +24,6 @@ const Forecast = () => {
         }
 
         setError(false);
-        setResponseObj({});
         setLoading(true);
 
         let url = new URL("https://community-open-weather-map.p.rapidapi.com/forecast?");
@@ -47,24 +45,18 @@ const Forecast = () => {
         })
             .then(response => response.json())
             .then(data => {
-                // console.log(data);
                 let dailyData = data.list.filter(reading => {
                     return reading.dt_txt.includes("18:00:00");
                 });
 
-
                 setForecastForFiveDays(dailyData);
-                setResponseObj(data);
                 setLoading(false);
 
             })
             .catch(err => {
                 setError(true);
                 setLoading(false);
-                // console.log(err.message);
             });
-
-
 
     }
 
@@ -111,7 +103,6 @@ const Forecast = () => {
                                         key={index}
                                         error={error}
                                         loading={loading}
-                                        responseObj={responseObj}
                                         data={daily}
                                         icon={daily.weather[0].icon} />
                         })}

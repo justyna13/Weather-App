@@ -8,24 +8,24 @@
 
 .weather-card {
   background: rgba(255, 255, 255, 0.2);
-  max-width: 200px;
-  min-width: 150px;
-  width: 40%;
-  padding: 0 0 40px 0;
-
-  color: #fff;
   border-radius: 5px;
+  color: #fff;
   font-size: 1rem;
   margin: 20px auto;
 
+  max-width: 200px;
+  min-width: 150px;
+  padding: 0 0 40px;
+  width: 40%;
+
   h5 {
-    margin: 2rem auto;
     font-weight: normal;
+    margin: 2rem auto;
   }
 
   p {
-    margin-top: 3rem;
     font-size: 1.4rem;
     font-weight: bold;
+    margin-top: 3rem;
   }
 }

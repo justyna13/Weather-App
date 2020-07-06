@@ -1,9 +1,8 @@
 import React from "react";
-import styles from './styles.css'
+import './styles.css'
 
 
 const CurrentConditions = (props) => {
-
 
     return (
 
@@ -50,8 +49,6 @@ const CurrentConditions = (props) => {
                     <br/>
                     Pressure
                 </span>
-
-
 
             </div>
 

@@ -7,20 +7,20 @@
 
 .weather-card {
   background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  color: #fff;
+  font-size: 1rem;
+  margin: 20px auto;
   max-width: 200px;
   min-width: 150px;
-  width: 40%;
-  padding: 0 0 40px 0;
-  color: #fff;
-  border-radius: 5px;
-  font-size: 1rem;
-  margin: 20px auto; }
+  padding: 0 0 40px;
+  width: 40%; }
   .weather-card h5 {
-    margin: 2rem auto;
-    font-weight: normal; }
+    font-weight: normal;
+    margin: 2rem auto; }
   .weather-card p {
-    margin-top: 3rem;
     font-size: 1.4rem;
-    font-weight: bold; }
+    font-weight: bold;
+    margin-top: 3rem; }
 
 /*# sourceMappingURL=styles.css.map */
