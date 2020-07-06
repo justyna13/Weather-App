@@ -36,8 +36,6 @@ function setIcon(desc) {
 const DailyCard = (props) => {
     let [day, time] = props.data.dt_txt.split(" ");
 
-    console.log(props.data.weather[0]);
-
     return (
         <div className="weather-card">
 

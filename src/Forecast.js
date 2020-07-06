@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import DailyCard from "./components/DailyCard/DailyCard";
 import Form from "./components/Form/Form";
+import CurrentConditions from "./components/CurrentConditions/CurrentConditions";
 
 const Forecast = () => {
 
@@ -64,7 +65,7 @@ const Forecast = () => {
             });
 
 
-        console.log(forecastForFiveDays);
+
     }
 
     return (
@@ -83,7 +84,25 @@ const Forecast = () => {
 
             {forecastForFiveDays.length > 0 ?
                 <div>
-                    <h4>Forecast</h4>
+                    <span className="weather-now-city">
+                        {city}
+                        <br/>
+                        {forecastForFiveDays[0].dt_txt}
+                    </span>
+
+
+                    <div className="weather-now">
+
+                           <p className="weather-now-temp">
+                                   <span>{forecastForFiveDays[0].main.temp} &deg;</span>
+                               <br/>
+                               {forecastForFiveDays[0].weather[0].main}
+                           </p>
+
+                        <CurrentConditions data={forecastForFiveDays[0]} />
+                    </div>
+
+
 
                     <div className="weather-cards">
 

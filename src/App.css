@@ -8,6 +8,40 @@
     color: #fff;
 }
 
+.weather-now {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.weather-now-city {
+    display: inline-flex;
+    text-align: left;
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 1.6rem;
+    line-height: 1.5;
+
+}
+
+.weather-now-city span {
+    font-size: 1.6rem;
+}
+
+.weather-now-temp {
+    margin: auto;
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.weather-now-temp span{
+    font-size: 3rem;
+    font-weight: 600;
+
+}
+
+
 main {
     flex-grow: 1;
     text-align: center;
@@ -23,4 +57,18 @@ footer {
     background: #eeeeee;
     font-size: small;
     text-align: center;
+}
+
+
+@media screen and (max-width: 600px) {
+    .weather-now {
+        flex-direction: column;
+    }
+
+
+    .weather-now div,
+    .weather-now p {
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
