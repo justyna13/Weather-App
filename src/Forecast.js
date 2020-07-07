@@ -86,7 +86,9 @@ const Forecast = () => {
                     <div className="weather-now">
 
                            <p className="weather-now-temp">
-                                   <span>{forecastForFiveDays[0].main.temp} &deg;</span>
+                                   <span>{forecastForFiveDays[0].main.temp} &deg;
+                                       {unit === 'imperial' ? 'F' : 'C'}
+                                       </span>
                                <br/>
                                {forecastForFiveDays[0].weather[0].main}
                            </p>
