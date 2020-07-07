@@ -1,6 +1,8 @@
 import React from "react";
 import './styles.css'
 
+import PropTypes from 'prop-types';
+
 
 const CurrentConditions = (props) => {
 
@@ -54,6 +56,10 @@ const CurrentConditions = (props) => {
 
         </div>
     )
+}
+
+CurrentConditions.propTypes = {
+    data: PropTypes.object,
 }
 
 export default CurrentConditions;

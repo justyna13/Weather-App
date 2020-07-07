@@ -1,5 +1,6 @@
 import React from "react";
 import './styles.scss';
+import PropTypes from 'prop-types';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBolt, faWind, faSun, faCloudRain } from '@fortawesome/free-solid-svg-icons'
@@ -52,6 +53,13 @@ const DailyCard = (props) => {
             }
         </div>
     )
+}
+
+DailyCard.propTypes = {
+    error: PropTypes.bool,
+    loading: PropTypes.bool,
+    data: PropTypes.object.isRequired,
+    icon: PropTypes.string.isRequired
 }
 
 export default DailyCard;

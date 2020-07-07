@@ -100,9 +100,9 @@ const Forecast = () => {
 
                     <div className="weather-cards">
 
-                        {forecastForFiveDays.map( (daily, index) => {
+                        {forecastForFiveDays.map( (daily, i) => {
                             return <DailyCard
-                                        key={index}
+                                        key={i}
                                         error={error}
                                         loading={loading}
                                         data={daily}

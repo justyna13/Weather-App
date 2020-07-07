@@ -1,5 +1,6 @@
 import React from "react";
-import styles from './styles.scss';
+import './styles.scss';
+import PropTypes from 'prop-types';
 
 
 class Form extends React.Component {
@@ -70,5 +71,12 @@ class Form extends React.Component {
         );
     }
 }
+
+Form.propTypes = {
+    city: PropTypes.string,
+    unit: PropTypes.string,
+    handleSubmit: PropTypes.func,
+}
+
 
 export default Form;
