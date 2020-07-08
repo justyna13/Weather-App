@@ -74,6 +74,7 @@ const Forecast = () => {
 
             {loading && <div>Loading...</div>}
 
+
             {forecastForFiveDays.length > 0 ?
                 <div>
                     <span className="weather-now-city">

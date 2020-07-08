@@ -9,17 +9,23 @@ class Form extends React.Component {
         super(props);
 
         this.state = {
-            city: this.props.city,
-            unit: this.props.unit
+            city: '',
+            unit: ''
         }
 
         this.onChange = this.onChange.bind(this);
+    }
+
+    componentDidMount() {
+        this.setState({ city: this.props.city });
+        this.setState({ unit: this.props.unit });
     }
 
 
     onSubmit = (e) => {
         e.preventDefault();
         this.props.handleSubmit(e, this.state.city, this.state.unit);
+        this.setState({ newData: true });
     }
 
     onChange = (event) => {
