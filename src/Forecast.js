@@ -26,29 +26,23 @@ const Forecast = () => {
         setError(false);
         setLoading(true);
 
-        let url = new URL("https://community-open-weather-map.p.rapidapi.com/forecast?");
+        let url = new URL("https://api.openweathermap.org/data/2.5/forecast?");
         let params = {
-            q: city,
-            units: unit
+            q: cityName,
+            units: unitChoosen,
+            appid: process.env.REACT_APP_API_KEY
         }
 
         Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
-
-
         fetch(url.toString(), {
-            "method": "GET",
-            "headers": {
-                "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
-                "x-rapidapi-key": process.env.REACT_APP_API_KEY
-            }
+            "method": "GET"
         })
             .then(response => response.json())
             .then(data => {
                 let dailyData = data.list.filter(reading => {
                     return reading.dt_txt.includes("18:00:00");
                 });
-
                 setForecastForFiveDays(dailyData);
                 setLoading(false);
 
